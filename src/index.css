@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+@import "tailwindcss";
+
+html,
+body,
+#root {
+  @apply h-full;
+}
+
+@theme {
+  --color-grey950: #111517;
+  --color-grey400: #808080;
+  --color-grey350: #979797;
+  --color-grey300: #b2b2b2;
+  --color-grey250: #c4c4c4;
+  --color-grey50: #fcfcfc;
+  --color-blue950: #202c36;
+  --color-blue900: #2b3844;
+
+  --font-display: "Nunito", sans-serif;
+}
+
+@utility text-preset-1 {
+  @apply font-extrabold text-[32px] leading-[137.5%] tracking-normal;
+}
+
+@utility text-preset-2 {
+  @apply font-extrabold text-[24px] leading-[137.5%] tracking-normal;
+}
+
+@utility text-preset-3 {
+  @apply font-extrabold text-[18px] leading-[145%] tracking-normal;
+}
+
+@utility text-preset-4sb {
+  @apply font-semibold text-[16px] leading-[200%] tracking-normal;
+}
+
+@utility text-preset-4li {
+  @apply font-light text-[16px] leading-[200%] tracking-normal;
+}
+
+@utility text-preset-5r {
+  @apply font-normal text-[14px] leading-[145%] tracking-normal;
+}
+
+@utility text-preset-5li {
+  @apply font-light text-[14px] leading-[225%] tracking-normal;
+}
+
+@utility text-preset-6sb {
+  @apply font-semibold text-[12px] leading-[135%] tracking-normal;
+}
+
+@utility text-preset-6r {
+  @apply font-normal text-[12px] leading-[135%] tracking-normal;
+}
+
+@utility text-preset-li {
+  @apply font-light text-[12px] leading-[135%] tracking-normal;
+}
