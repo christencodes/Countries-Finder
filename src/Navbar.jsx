@@ -1,26 +1,29 @@
+import { useTheme } from "./ThemeProvider";
 import { Sun } from "lucide-react";
 import { Moon } from "lucide-react";
-import { useTheme } from "./ThemeProvider";
 
 export default function Navbar() {
-  const { theme, themeSetter } = useTheme();
-
+  const { currentTheme, themeSwitch } = useTheme();
   return (
     <div
-      className={`relative  w-full px-10 h-20  flex justify-between items-center shadow-md ${theme ? "" : "bg-blue900 text-white "} `}
+      className={` relative navbar w-full flex items-center justify-between px-5 py-6 ${currentTheme ? "bg-blue900 text-white" : "bg-white text-blue950 shadow-2xl "}`}
     >
-      <div className="question">
-        <h1 className="font-display font-extrabold text-[16px]">
-          Where in the world?{" "}
-        </h1>
+      <div className="logo font-display text-[14px] font-extrabold">
+        Where in the world?
       </div>
-      <div
-        onClick={() => themeSetter()}
-        className="theme-switcher flex items-center gap-2"
+      <button
+        onClick={() => themeSwitch()}
+        className="flex items-center gap-2 cursor-pointer"
       >
-        {theme ? <Moon color="black"></Moon> : <Sun></Sun>}
-        <p className="text-preset-6sb">Light Mode</p>
-      </div>
+        {currentTheme ? (
+          <Sun size={14} color="white"></Sun>
+        ) : (
+          <Moon size={14} color="#202c36"></Moon>
+        )}
+        <p className=" text-preset-6sb">
+          {currentTheme ? "Light Mode" : "Dark Mode"}
+        </p>
+      </button>
     </div>
   );
 }

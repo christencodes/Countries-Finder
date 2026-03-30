@@ -1,18 +1,17 @@
+import { Search } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
-import { SearchIcon } from "lucide-react";
 
-export default function Search({ userInput }) {
-  const { theme } = useTheme();
+export default function SearchField({ setInput }) {
+  const { currentTheme } = useTheme();
+
   return (
     <div
-      className={`search flex justify-start items-center rounded-[5px] lg:max-w-120  w-full max-w-85.75 mx-auto pl-8 ${theme ? "bg-white text-grey400 shadow-2xl/25 " : "bg-blue900"}`}
+      className={`flex items-center w-full h-14 rounded-[5px] px-8 gap-6 ${currentTheme ? "bg-blue900 text-white" : "bg-white text-blue900 shadow-2xl"}`}
     >
-      <SearchIcon size={15} color={theme ? "#808080" : "white"}></SearchIcon>
+      <Search size={17.5}></Search>
       <input
-        //this needs to be changed
-        //debouncing issue
-        onChange={(e) => userInput(e.target.value)}
-        className={`w-full h-12 text-left pl-5 focus:outline-0 text-preset-6r ${theme ? " " : " text-white"} `}
+        onChange={(e) => setInput(e.target.value)}
+        className={`text-preset-5r ${currentTheme ? "text-white" : "text-blue950"} focus:outline-0`}
         type="search"
         placeholder="Search for a country..."
       />

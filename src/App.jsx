@@ -1,50 +1,45 @@
-import { useEffect, useState } from "react";
-
+import ThemeProvider from "./ThemeProvider";
 import Navbar from "./Navbar";
-import ThemeObserver from "./ThemeProvider";
 import MainContainer from "./MainContainer";
-import Search from "./Search";
+import SearchField from "./Search";
+import { useEffect, useState } from "react";
+import useFetch from "./Fetcher";
 import Filter from "./Filter";
-
-import useFetch from "./Fetching";
+import CountryCard from "./CountryCard";
 
 function App() {
-  //query comes from search
-  const [query, setQuery] = useState(null);
-  const [timedQuery, setTimedQuery] = useState(null);
+  const [input, setInput] = useState("");
+  const [query, setQuery] = useState("");
+
+  const { data } = useFetch(
+    `https://restcountries.com/v3.1/name/${query}/?fullText=true`,
+    input,
+  );
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setTimedQuery();
+      setQuery(input);
     }, 500);
-  }, [query]);
 
-  function userInput(input) {
-    setQuery(input);
-  }
+    return () => clearTimeout(timer);
+  }, [input]);
 
-  /*
-  this will update when query updates
-  ? setQuery causes re-render 
-  * useFetch template literal updates 
-  * isData is updated ---> we need to place isData somewhere
-
-   */
-  const { isData } = useFetch(
-    ` https://restcountries.com/v3.1/name/${timedQuery}?fullText=true`,
-  );
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="h-full">
-      <ThemeObserver>
+      <ThemeProvider>
         <Navbar></Navbar>
         <MainContainer>
-          <div className="w-full flex flex-col gap-8 ">
-            <Search userInput={userInput}></Search>
+          <div className=" flex flex-col gap-6">
+            <SearchField setInput={setInput}></SearchField>
             <Filter></Filter>
           </div>
+          <CountryCard></CountryCard>
         </MainContainer>
-      </ThemeObserver>
+      </ThemeProvider>
     </div>
   );
 }

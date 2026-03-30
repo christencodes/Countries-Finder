@@ -1,21 +1,23 @@
 import { createContext, useContext, useState } from "react";
 
-const ThemeProvider = createContext();
+const Theme = createContext();
 
-export default function ThemeObserver({ children }) {
-  const [theme, setTheme] = useState(false);
+export default function ThemeProvider({ children }) {
+  //true - dark
+  //false - light
+  const [currentTheme, setTheme] = useState(true);
 
-  function themeSetter() {
-    setTheme(!theme);
+  function themeSwitch() {
+    setTheme(!currentTheme);
   }
 
   return (
-    <ThemeProvider.Provider value={{ themeSetter, theme }}>
+    <Theme.Provider value={{ themeSwitch, currentTheme }}>
       {children}
-    </ThemeProvider.Provider>
+    </Theme.Provider>
   );
 }
 
 export function useTheme() {
-  return useContext(ThemeProvider);
+  return useContext(Theme);
 }

@@ -1,10 +1,11 @@
 import { useTheme } from "./ThemeProvider";
 
 export default function MainContainer({ children }) {
-  const { theme } = useTheme();
+  const { currentTheme } = useTheme();
+
   return (
     <div
-      className={`main flex items-start gap-4 h-full px-10 ${theme ? "bg-white" : "bg-blue950"} py-10  `}
+      className={`h-full py-12 px-5 ${currentTheme ? "bg-blue950" : "bg-white"}`}
     >
       {children}
     </div>
