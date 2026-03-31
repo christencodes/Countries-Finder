@@ -6,8 +6,21 @@ import { useEffect, useState } from "react";
 import useFetch from "./Fetcher";
 import Filter from "./Filter";
 import CountryCard from "./CountryCard";
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import CountryDetails from "./CountryDetails";
 
 function App() {
+  const defaultCountries = [
+    "Germany",
+    "United States",
+    "Brazil",
+    "Iceland",
+    "Afghanistan",
+    "Algeria",
+    "Albania",
+    "Japan",
+  ];
+
   const [input, setInput] = useState("");
   const [query, setQuery] = useState("");
 
@@ -25,22 +38,31 @@ function App() {
   }, [input]);
 
   useEffect(() => {
-    console.log(data);
+    if (data != null) {
+      console.log(data);
+    }
   }, [data]);
 
   return (
-    <div className="h-full">
-      <ThemeProvider>
-        <Navbar></Navbar>
-        <MainContainer>
-          <div className=" flex flex-col gap-6">
-            <SearchField setInput={setInput}></SearchField>
-            <Filter></Filter>
-          </div>
-          <CountryCard></CountryCard>
-        </MainContainer>
-      </ThemeProvider>
-    </div>
+    <BrowserRouter>
+      <div className="h-full">
+        <ThemeProvider>
+          <Navbar></Navbar>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <MainContainer
+                  setInput={setInput}
+                  defaultCountries={defaultCountries}
+                ></MainContainer>
+              }
+            ></Route>
+            <Route path="/:countryName" element={<CountryDetails />}></Route>
+          </Routes>
+        </ThemeProvider>
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -6,7 +6,7 @@ export default function SearchField({ setInput }) {
 
   return (
     <div
-      className={`flex items-center w-full h-14 rounded-[5px] px-8 gap-6 ${currentTheme ? "bg-blue900 text-white" : "bg-white text-blue900 shadow-2xl"}`}
+      className={`flex items-center w-full h-14 rounded-[5px] px-8 gap-6 md:max-w-[480px] ${currentTheme ? "bg-blue900 text-white" : "bg-white text-blue900 shadow-2xl"}`}
     >
       <Search size={17.5}></Search>
       <input
