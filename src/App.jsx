@@ -4,7 +4,7 @@ import MainContainer from "./MainContainer";
 import SearchField from "./Search";
 import Filter from "./Filter";
 import CountryCard from "./CountryCard";
-import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import { HashRouter, Route, Routes, Link } from "react-router-dom";
 import CountryDetails from "./CountryDetails";
 
 function App() {
@@ -26,7 +26,7 @@ function App() {
   // }, [data]);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="h-full">
         <ThemeProvider>
           <Navbar></Navbar>
@@ -44,7 +44,7 @@ function App() {
           </Routes>
         </ThemeProvider>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
