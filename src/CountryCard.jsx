@@ -1,8 +1,7 @@
 import { useTheme } from "./ThemeProvider";
 import useFetch from "./Fetcher";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import { Link } from "react-router-dom";
-Link;
 
 export default function CountryCard({ country }) {
   const { currentTheme } = useTheme();
@@ -14,11 +13,11 @@ export default function CountryCard({ country }) {
 
   // let img, population, region, capital;
 
-  useEffect(() => {
-    if (data != null) {
-      console.log(data[0]);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data != null) {
+  //     console.log(data[0]);
+  //   }
+  // }, [data]);
 
   return (
     <div
@@ -26,8 +25,8 @@ export default function CountryCard({ country }) {
     >
       <Link className="cursor-pointer" to={data != null ? `/${country}` : ""}>
         <img
-          className="min-h-40"
-          src={data != null ? data[0].flags.png : ""}
+          className="h-40  w-full"
+          src={data != null ? data[0].flags.png : " "}
           alt=""
         />
       </Link>

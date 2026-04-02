@@ -56,6 +56,6 @@ body,
   @apply font-normal text-[12px] leading-[135%] tracking-normal;
 }
 
-@utility text-preset-li {
+@utility text-preset-6li {
   @apply font-light text-[12px] leading-[135%] tracking-normal;
 }

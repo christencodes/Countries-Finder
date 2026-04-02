@@ -6,7 +6,7 @@ export default function Navbar() {
   const { currentTheme, themeSwitch } = useTheme();
   return (
     <div
-      className={` relative navbar w-full flex items-center justify-between px-9 py-6 ${currentTheme ? "bg-blue900 text-white" : "bg-white text-blue950 shadow-2xl "}`}
+      className={` relative navbar w-full flex items-center justify-between px-9 py-6 lg:px-18 ${currentTheme ? "bg-blue900 text-white" : "bg-white text-blue950 shadow-2xl "}`}
     >
       <div className="logo font-display text-[14px] font-extrabold">
         Where in the world?
